@@ -1,0 +1,2 @@
+# Aloitus
+Ensimmäinen Rasekon repositorio
