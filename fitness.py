@@ -4,18 +4,21 @@
 # Muuttujat
 
 # Kysytään käyttäjältä tiedot
-pituus_teksti = input("Kuinka pitkä olet? (cm): ") 
-paino_teksti = input("Kuinka paljon painat? (kg): ") 
+pituus_teksti = input("Kuinka pitkä olet? (cm): ")
+paino_teksti = input("Kuinka paljon painat? (kg): ")
 ika_teksti = input("Kuinka vanha olet?: ")
-sukupuoli_teksti = input("Mikä on sukupuolesi? mies vastaa 1, nainen vastaa 0: ") 
+sukupuoli_teksti = input(
+    "Mikä on sukupuolesi? mies vastaa 1, nainen vastaa 0: ")
 
 # Muutetaan vastaukset liukuluvuiksi
-pituus = float(pituus_teksti) 
-paino = float(paino_teksti) 
+pituus = float(pituus_teksti)
+paino = float(paino_teksti)
 ika = float(ika_teksti)
 sukupuoli = float(sukupuoli_teksti)
 
 # Määritellään funktio painoindeksin laskentaan
+
+
 def laske_bmi(paino, pituus):
     """Laskee painoindeksin (BMI)
 
@@ -26,13 +29,16 @@ def laske_bmi(paino, pituus):
     Returns:
         float: painoindeksi desimaalin tarkkuudella
     """
-    pituus = pituus / 100 # Muutetaan pituuks metreiksi
+    pituus = pituus / 100  # Muutetaan pituuks metreiksi
     bmi = paino / pituus**2
     bmi = round(bmi, 1)
     return bmi
 
-def aikuisen_rasvaprosentti (bmi, ika, sukupuoli):
-    """Laskee rasvaprosentin
+
+# Määritellään funktio aikuisen rasvaprosentin laskentaan
+
+def aikuisen_rasvaprosentti(bmi, ika, sukupuoli):
+    """Laskee aikuisen rasvaprosentin
 
     Args:
         bmi (float): painoindeksi
@@ -46,10 +52,27 @@ def aikuisen_rasvaprosentti (bmi, ika, sukupuoli):
     rasvaprosentti = round(rasvaprosentti)
     return rasvaprosentti
 
+
 oma_bmi = laske_bmi(paino, pituus)
-oma_rasvaprosentti = aikuisen_rasvaprosentti(oma_bmi, ika, sukupuoli , )
-
-
+oma_rasvaprosentti = aikuisen_rasvaprosentti(oma_bmi, ika, sukupuoli, )
 
 
 print("Painoindeksisi on", oma_bmi, "ja rasvaprosenttisi on", oma_rasvaprosentti)
+
+
+# Määritellään funktio lapsen rasvaprosentin laskentaan
+
+def lapsen_rasvaprosentti(bmi, ika, sukupuoli):
+    """Laskee lapsen rasvaprosentin
+
+    Args:
+        bmi (float): painoindeksi
+        ika (float): henkilön ikä
+        sukupuoli (float): 1 -> poika, 0 -> tyttö
+
+    Returns:
+        float: kehon rasvaprosentti (lapsi)
+    """
+    rasvaprosentti = 1.51 * bmi - 0.7 * ika - 3.6 * sukupuoli + 1.4
+    rasvaprosentti = round(rasvaprosentti)
+    return rasvaprosentti
