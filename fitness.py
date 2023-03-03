@@ -71,9 +71,9 @@ def usarasvaprosentti_mies(pituus, vyotaron_ymparys, kaulan_ymparys):
     """
 
     # Muutetaan mitat tuumiksi
-    tuuma_pituus = pituus / 2.5
-    tuuma_vyotaron_ymparys = vyotaron_ymparys / 2.5
-    tuuma_kaulan_ymparys = kaulan_ymparys / 2.5
+    tuuma_pituus = pituus / 2.54
+    tuuma_vyotaron_ymparys = vyotaron_ymparys / 2.54
+    tuuma_kaulan_ymparys = kaulan_ymparys / 2.54
 
     # Lasketaan rasvaprosentti
     usarprosentti = 86.010 * math.log10(tuuma_vyotaron_ymparys -
