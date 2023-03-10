@@ -26,7 +26,7 @@ class Question():
             
             while True:
                 answer_txt = input(self.question)
-
+                # TODO: Add a routine to change , to . if user types the wrong symbol
                 # Let's try convert input to numeric
                 try:
                     answer = float(answer_txt)
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     print(answer_and_error)
 
     question2 = Question("Kuinka vanha olet? ")
-    answer_and_error = question2.ask_user_integer(True)
+    answer_and_error = question2.ask_user_integer(False)
     print(answer_and_error)
 
     question3 = Question("Haluatko lähteä viikonlopun viettoon? ")
