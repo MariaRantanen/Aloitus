@@ -2,90 +2,45 @@
 # -----------------------------------------------------------------
 
 # LIBRARIES AND MODULES
-
 import kuntoilija
-
-
+import questions
 
 
 # Enter information about an athlete
-nimi = input("Nimi: ")
-
-# Use ask_user funktion to get height and convert it into float
-answer = ask_user("Pituus (cm): ")
-
-# Read the 1st element of the tuple containing height value
-pituus = answer[0]
-
-answer = ask_user("Paino (kg): ")
-paino = answer[0]
-
-answer = ask_user("Ikä: ")
-ika = answer[0]
-
-answer = ask_user("Sukupuoli, 1 mies, 0 nainen: ")
-sukupuoli = answer[0]
+name = input("Nimi: ")
 
 
-'''
-# Loop until user gives a correctly formatted value
 
-while True:
-    pituus_txt = input("Pituus (cm): ")
 
-# Let's try convert input to numeric
-    try:
-        pituus = float(pituus_txt)
-        break
+# Ask details about her/him 
+question = questions.Question("Kuinka paljon painat (kg): ")
+weight = question.ask_user_float(True)[0]
+question = questions.Question("Kuinka pitkä olet (cm): ")
+height = question.ask_user_float(True)[0]
+question = questions.Question("Kuinka vanha olet: ")
+age = question.ask_user_integer(True)[0]
+question = questions.Question("Sukupuolesi mies = 1, nainen = 0: ")
+gender = question.ask_user_integer(True)[0]
+question = questions.Question("Kaulan ympärysmitta (cm): ")
+neck = question.ask_user_float(True)[0]
+question = questions.Question("Vyötärön ympärysmitta (cm): ")
+waist = question.ask_user_float(True)[0]
+if gender == 0:
+    question = questions.Question("Lantion ympärys (cm): ")
+    hips = question.ask_user_float(True)[0]
 
-    # If an error occurs tell the user to check    
-    except Exception as e:
-        print("Virhe syötetyssä arvossa, älä käytä yksiköitä", e)
+# Create an athlete object from Kuntoilija class
+athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender)
 
-# Loop until user gives a correctly formatted value
-while True:
-    paino_txt = input("Paino (kg): ")
+# Print some information about the athlete
+text_to_show = f"Terve {athlete.nimi}, painoindeksisi tänään on {athlete.bmi}"
+print(text_to_show)
+fat_percentage = athlete.rasvaprosentti()
+if gender == 1:
+    usa_fat_percentage = athlete.usa_rasvaprosentti_mies(height, waist, neck)
+else:
+    usa_fat_percentage = athlete.usa_rasvaprosentti_nainen(height, waist, hips, neck)
 
-# Let's try convert input to numeric
-    try:
-        paino = float(paino_txt)
-        break
+text_to_show = f"suomalainen rasva-% on {fat_percentage} ja amerikkalainen on {usa_fat_percentage}"
+print(text_to_show)
 
-    # If an error occurs tell the user to check    
-    except Exception as e:
-        print("Virhe syötetyssä arvossa, älä käytä yksiköitä", e)
-
-# Loop until user gives a correctly formatted value
-while True:
-    ika_txt = input("Ikä: ")
-
-# Let's try convert input to numeric
-    try:
-        ika = float(ika_txt)
-        break
-
-    # If an error occurs tell the user to check    
-    except Exception as e:
-        print("Virhe syötetyssä arvossa, älä käytä yksiköitä", e)
-
-# Loop until user gives a correctly formatted value
-while True:
-    sukupuoli_txt = input("Sukupuoli, mies 1, nainen 0: : ")
-
-# Let's try convert input to numeric
-    try:
-        sukupuoli = float(sukupuoli_txt)
-        break
-
-    # If an error occurs tell the user to check    
-    except Exception as e:
-        print("Virhe syötetyssä arvossa, älä käytä yksiköitä", e)
-
-'''
-
-kuntoilija1 = kuntoilija.Kuntoilija(nimi, pituus, paino, ika, sukupuoli)
-
-print(kuntoilija1.nimi, "painoindeksisi on ", kuntoilija1.bmi)
-
-print("Viimeisen kysymyksen virheilmoitus",
-      answer[1], "koodi", answer[2], "engl. ilmoitus", answer[3])
