@@ -26,5 +26,5 @@ def test_lapsen_rasvaprosentti():
 def test_usarasvaprosentti_mies():
     assert round(fitness.usarasvaprosentti_mies(174, 90, 38)) == 21
 
-def test_usarasvaprosentti_nainen():
-    assert round(fitness.usarasvaprosentti_nainen(156, 85, 35, 100)) == 36
+def test_naisen_usa_rasvaprosentti():
+    assert round(fitness.usarasvaprosentti_nainen(170, 70, 90, 37)) == 18
