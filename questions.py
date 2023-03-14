@@ -156,6 +156,40 @@ class Question():
 
         return result
     
+    # A method to ask a question and convert answer according to a dictionary
+    @staticmethod
+    def ask_user_dictionary(question, dictionary, loop):
+        """Returns a value based on dictionary
+
+        Args:
+            question (str): The question to be asked
+            dictionary (dict): Possible answers in key-value-pairs
+            loop (bool): If True asks the question untill able to convert it
+
+        Returns:
+            tuple: answer in correct type, error message, error code, detailed error
+        """
+
+        if loop == True:
+            while True:
+                answert_txt = input(question).lower()
+                try:
+                    value = dictionary[answert_txt]
+                    result = (value, "OK", 0, "Conversion succesful")
+                    break
+                except Exception as e:
+                    result = ("N/A", "Error", 1, str(e))
+        
+        else: 
+            answert_txt = input(question)
+            try:
+                value = dictionary[answert_txt]
+                result = (value, "OK", 0, "Conversion successful")
+
+            except Exception as e:
+                result = ("N/A", "Error", 1, str(e))
+
+        return result
 
 if __name__ == "__main__":
     
@@ -168,6 +202,16 @@ if __name__ == "__main__":
 
     answer_and_error = Question.ask_user_boolean("Osaatko koodata: ", "Y", "N", True)
     print(answer_and_error)
+
+    gender_dictionary = {"tyttö": 0, "poika": 1, "nainen": 0, "mies": 1}
+
+    answer_and_error = Question.ask_user_dictionary("Sukupuoli: ", gender_dictionary, False)
+    print(answer_and_error)
+
+
+
+
+
 
 
 # Below same whitout using staticmethod. Instead using 
@@ -304,6 +348,6 @@ if __name__ == "__main__":
 
     #     return result
     
-    # TODO: Create a method to ask a question and convert
+   
     #  answer according to a dictionary
 
