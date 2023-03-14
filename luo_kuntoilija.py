@@ -13,21 +13,17 @@ name = input("Nimi: ")
 
 
 # Ask details about her/him 
-question = questions.Question("Kuinka paljon painat (kg): ")
-weight = question.ask_user_float(True)[0]
-question = questions.Question("Kuinka pitkä olet (cm): ")
-height = question.ask_user_float(True)[0]
-question = questions.Question("Kuinka vanha olet: ")
-age = question.ask_user_integer(True)[0]
-question = questions.Question("Sukupuolesi mies = 1, nainen = 0: ")
-gender = question.ask_user_integer(True)[0]
-question = questions.Question("Kaulan ympärysmitta (cm): ")
-neck = question.ask_user_float(True)[0]
-question = questions.Question("Vyötärön ympärysmitta (cm): ")
-waist = question.ask_user_float(True)[0]
+
+weight = questions.Question.ask_user_float("Kuinka paljon painat (kg): ", True)[0]
+height = questions.Question.ask_user_float("Kuinka pitkä olet (cm): ", True)[0]
+age = questions.Question.ask_user_integer("Kuinka vanha olet: ", True)[0]
+gender = questions.Question.ask_user_integer("Sukupuolesi mies = 1, nainen = 0: ", True)[0]
+neck = questions.Question.ask_user_float("Kaulan ympärysmitta (cm): ", True)[0]
+waist = questions.Question.ask_user_float("Vyötärön ympärysmitta (cm): ", True)[0]
+
+# If woman, ask circumference of her hips
 if gender == 0:
-    question = questions.Question("Lantion ympärys (cm): ")
-    hips = question.ask_user_float(True)[0]
+    hips = questions.Question.ask_user_float("Lantion ympärys (cm): ", True)[0]
 
 # Create an athlete object from Kuntoilija class
 athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender)
@@ -43,4 +39,6 @@ else:
 
 text_to_show = f"suomalainen rasva-% on {fat_percentage} ja amerikkalainen on {usa_fat_percentage}"
 print(text_to_show)
+
+# TODO: Save user in
 
