@@ -76,6 +76,19 @@ def test_ask_user_boolean3(monkeypatch):
     user_input = 'v'
     # Use anonymous function to create input from variable
     monkeypatch.setattr('builtins.input', lambda _: user_input)
-    question = questions.Question('Haluatko jatkaa')
     assert questions.Question.ask_user_boolean("Haluatko jatkaa", 'Y', 'N', False) == (
         'N/A', 'Error', 1, 'unable to convert to boolean')
+    
+# Test to get value from dictionary
+def test_ask_user_dictionary(monkeypatch):
+    user_input = "tyttö"
+    gender_dictionary = {"tyttö": 0, "poika": 1}
+    monkeypatch.setattr('builtins.input', lambda _: user_input)
+    assert questions.Question.ask_user_dictionary("Sukupuoli: ", gender_dictionary, False) == (0, "OK", 0, "Conversion successful")
+
+# Test to get eroor when is missing
+def test_ask_user_dictionary2(monkeypatch):
+    user_input = "jätkä"
+    gender_dictionary = {"tyttö": 0, "poika": 1}
+    monkeypatch.setattr('builtins.input', lambda _: user_input)
+    assert questions.Question.ask_user_dictionary("Sukupuoli: ", gender_dictionary, False) == ('N/A', 'Error', 1, "'jätkä'")
