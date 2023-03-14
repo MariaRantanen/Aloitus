@@ -58,7 +58,7 @@ class Question():
 
         return result
     
-    # TODO: Make all conversion functions to static ones
+   
 
     @staticmethod
     def ask_user_float(question, loop):
@@ -76,8 +76,9 @@ class Question():
             
             while True:
                 answer_txt = input(question)
-           
+                
                 try:
+                    answer_txt = answer_txt.replace(",", ".")
                     answer = float(answer_txt)
                     result = (answer, 'OK', 0, 'Conversion successful')
                     break
@@ -93,6 +94,7 @@ class Question():
 
             # Let's try to convert input to numeric
             try:
+                answer_txt = answer_txt.replace(",", ".")
                 answer = float(answer_txt)
                 result = (answer, 'OK', 0, 'Conversion successful')
 
@@ -183,7 +185,7 @@ if __name__ == "__main__":
             
     #         while True:
     #             answer_txt = input(self.question)
-    #             # TODO: Add a routine to change , to . if user types the wrong symbol
+    #             
     #             # Let's try to convert input to numeric
     #             try:
     #                 answer = float(answer_txt)
