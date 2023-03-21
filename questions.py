@@ -194,10 +194,10 @@ class Question():
 if __name__ == "__main__":
     
     
-    answer_and_error = Question.ask_user_float("Kuinka paljon painat:", True)
+    answer_and_error = Question.ask_user_float("Kuinka paljon painat: ", True)
     print(answer_and_error)
 
-    answer_and_error = Question.ask_user_integer("Kuinka vanha olet:", True)
+    answer_and_error = Question.ask_user_integer("Kuinka vanha olet: ", True)
     print(answer_and_error)
 
     answer_and_error = Question.ask_user_boolean("Osaatko koodata: ", "Y", "N", True)
@@ -207,14 +207,17 @@ if __name__ == "__main__":
 
     answer_and_error = Question.ask_user_dictionary("Sukupuoli: ", gender_dictionary, False)
     print(answer_and_error)
+    
+    gender_dictionary = {'1': 1, '0': 0}
+    answer_and_error = Question.ask_user_dictionary('Sukupuoli 1 mies, 0 nainen ', gender_dictionary, False)
+    print(answer_and_error)
 
 
 
 
 
 
-
-# Below same whitout using staticmethod. Instead using 
+# Below same whitout using staticmethod.
 
     # def ask_user_float(self, loop):
     #     """Asks a question and converts the answer to a floating point number
