@@ -1,1 +1,34 @@
-[{"nimi": "Maria", "pituus": 156.0, "paino": 70.0, "ika": 33, "sukupuoli": 0, "pvm": "2023-03-21"}]
+[
+    {
+        "nimi": "Maria",
+        "pituus": 156.0,
+        "paino": 70.0,
+        "ika": 33,
+        "sukupuoli": 0,
+        "pvm": "2023-03-21"
+    },
+    {
+        "nimi": "Maria",
+        "pituus": 156.0,
+        "paino": 70.0,
+        "ika": 33,
+        "sukupuoli": 0,
+        "pvm": "2023-03-21"
+    },
+    {
+        "nimi": "Essi",
+        "pituus": 160.0,
+        "paino": 65.0,
+        "ika": 35,
+        "sukupuoli": 0,
+        "pvm": "2023-04-01"
+    },
+    {
+        "nimi": "Pekka",
+        "pituus": 172.0,
+        "paino": 85.0,
+        "ika": 35,
+        "sukupuoli": 1,
+        "pvm": "2023-03-25"
+    }
+]
