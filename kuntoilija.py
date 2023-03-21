@@ -15,7 +15,7 @@ class Kuntoilija:
     """Luokka kuntoilijan tietoja varten"""
 
     # Oliomuodostin eli kontruktori, self -> tuleva olio
-    def __init__(self, nimi, pituus, paino, ika, sukupuoli):
+    def __init__(self, nimi, pituus, paino, ika, sukupuoli, paiva):
 
         # Määritellään tulevan olion ominaisuudet (property), luokan kentät (field)
         self.nimi = nimi
@@ -24,6 +24,7 @@ class Kuntoilija:
         self.ika = ika
         self.sukupuoli = sukupuoli
         self.bmi = fitness.laske_bmi(self.paino, self.pituus)
+        self.punnitus_paiva =paiva
 
     # Metodi rasvaprosentin laskemiseen (yleinen / aikuinen)
     def rasvaprosentti(self):
